@@ -5,32 +5,12 @@ import Layout from './components/Layout';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
-// Placeholder Pages
-const Dashboard = () => (
-  <div>
-    <h2 className="text-2xl font-bold mb-6">Dashboard Overview</h2>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div className="card p-6 border-l-4 border-primary-500">
-        <p className="text-slate-500 text-sm font-medium">Active Projects</p>
-        <p className="text-3xl font-bold mt-1">12</p>
-      </div>
-      <div className="card p-6 border-l-4 border-yellow-500">
-        <p className="text-slate-500 text-sm font-medium">Pending Tasks</p>
-        <p className="text-3xl font-bold mt-1">24</p>
-      </div>
-      <div className="card p-6 border-l-4 border-green-500">
-        <p className="text-slate-500 text-sm font-medium">Completed</p>
-        <p className="text-3xl font-bold mt-1">158</p>
-      </div>
-    </div>
-  </div>
-);
-
+import Dashboard from './pages/Dashboard';
 import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
+import MyTasks from './pages/MyTasks';
 
-const MyTasks = () => <div className="text-2xl font-bold">My Assigned Tasks</div>;
-const Team = () => <div className="text-2xl font-bold">Team Management</div>;
+const Team = () => <div className="text-2xl font-bold animate-fade-in text-white tracking-tight">Team Management</div>;
 
 function App() {
   return (
