@@ -95,7 +95,7 @@ const Login = () => {
           <div className="mt-12 pt-8 border-t border-[#27272a] text-sm text-[#767d88]">
             Don't have an account?{' '}
             <Link to="/signup" className="text-white hover:underline decoration-[#27272a] underline-offset-4 transition-colors">
-              Request access
+              Sign Up
             </Link>
           </div>
         </div>

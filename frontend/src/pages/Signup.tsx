@@ -42,7 +42,7 @@ const Signup = () => {
             <span className="font-bold text-xl tracking-tight">Ethara</span>
           </div>
 
-          <h2 className="text-5xl font-normal leading-[1.0] tracking-[-0.03em] mb-3">Request Access.</h2>
+          <h2 className="text-5xl font-normal leading-[1.0] tracking-[-0.03em] mb-3">Sign Up.</h2>
           <p className="text-[#767d88] text-lg mb-10 tracking-tight">Create your account to start orchestrating projects.</p>
 
           {error && (

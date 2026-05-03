@@ -58,8 +58,9 @@ export const getTasks = async (req: Request, res: Response) => {
 
 export const updateTask = async (req: Request, res: Response) => {
   try {
+    const taskId = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
     const task = await prisma.task.update({
-      where: { id: req.params.id },
+      where: { id: taskId },
       data: req.body
     });
     res.json({ success: true, data: task });
@@ -70,7 +71,8 @@ export const updateTask = async (req: Request, res: Response) => {
 
 export const deleteTask = async (req: Request, res: Response) => {
   try {
-    await prisma.task.delete({ where: { id: req.params.id } });
+    const taskId = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+    await prisma.task.delete({ where: { id: taskId } });
     res.json({ success: true, data: {} });
   } catch (error: any) {
     res.status(500).json({ success: false, error: error.message });

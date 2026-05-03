@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM2ZjE3ZjNlLThjNDYtNDRlMC1iNzg1LWJlMDEzYTNmMjA3YSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc3NzgwODc0MSwiZXhwIjoxNzgwNDAwNzQxfQ.Hi1MwtI-Csjqe-SW-_7cFjfu2p8VKiq39j6GNi1bCqw' http://localhost:5000/api/workspace/teams)",
+      "Bash(node -e \"const { PrismaClient } = require\\('@prisma/client'\\); const prisma = new PrismaClient\\(\\); prisma.user.findFirst\\({ where: { role: 'MEMBER' }, select: { email: true } }\\).then\\(user => { console.log\\(user.email\\); process.exit\\(0\\); }\\).catch\\(err => { console.error\\(err\\); process.exit\\(1\\); }\\);\")",
+      "Bash(node *)",
+      "Bash(pkill -f \"ts-node-dev\")"
+    ]
+  }
+}

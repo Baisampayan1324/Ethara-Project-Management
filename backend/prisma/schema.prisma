@@ -24,6 +24,18 @@ enum Priority {
   HIGH
 }
 
+enum ProjectType {
+  MEETING_INTELLIGENCE
+  LEAD_AUTOMATION
+  RAG_KNOWLEDGE
+  EMAIL_AUTOMATION
+  EMAIL_TRIAGE
+  RESEARCH_ASSISTANT
+  NL2SQL_ANALYTICS
+  ALGO_TRADING
+  EDTECH_PLATFORM
+}
+
 model User {
   id            String    @id @default(uuid())
   name          String
@@ -35,10 +47,27 @@ model User {
   projects      Project[] @relation("ProjectCreator")
   assignedTasks Task[]    @relation("TaskAssignee")
   memberOf      Project[] @relation("ProjectMembers")
+  ledTeams      Team[]    @relation("TeamLead")
+  team          Team?     @relation("TeamUsers", fields: [teamId], references: [id], onDelete: SetNull)
+  teamId        String?
+}
+
+model Team {
+  id          String    @id @default(uuid())
+  name        String    @unique
+  description String?
+  createdAt   DateTime  @default(now())
+
+  lead        User?     @relation("TeamLead", fields: [leadId], references: [id])
+  leadId      String?
+
+  members     User[]    @relation("TeamUsers")
+  projects    Project[]
 }
 
 model Project {
   id          String    @id @default(uuid())
+  type        ProjectType @default(RAG_KNOWLEDGE)
   name        String
   description String?
   deadline    DateTime?
@@ -47,6 +76,9 @@ model Project {
   
   createdBy   User      @relation("ProjectCreator", fields: [createdById], references: [id])
   createdById String
+
+  team        Team?     @relation(fields: [teamId], references: [id], onDelete: SetNull)
+  teamId      String?
   
   members     User[]    @relation("ProjectMembers")
   tasks       Task[]

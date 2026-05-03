@@ -7,6 +7,7 @@ import path from 'path';
 import authRoutes from './routes/authRoutes';
 import projectRoutes from './routes/projectRoutes';
 import taskRoutes from './routes/taskRoutes';
+import workspaceRoutes from './routes/workspaceRoutes';
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.use(morgan('dev'));
 app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/tasks', taskRoutes);
+app.use('/api/workspace', workspaceRoutes);
 
 // Serve Frontend in Production
 if (process.env.NODE_ENV === 'production') {

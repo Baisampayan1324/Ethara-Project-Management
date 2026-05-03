@@ -9,8 +9,7 @@ import Dashboard from './pages/Dashboard';
 import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
 import MyTasks from './pages/MyTasks';
-
-const Team = () => <div className="text-2xl font-bold animate-fade-in text-white tracking-tight">Team Management</div>;
+import Team from './pages/Team';
 
 function App() {
   return (
