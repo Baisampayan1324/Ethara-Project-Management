@@ -25,14 +25,20 @@ app.use('/api/projects', projectRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/workspace', workspaceRoutes);
 
-// Root route
-app.get('/', (req, res) => {
-  res.json({ 
-    message: 'Ethara API is running', 
-    environment: process.env.NODE_ENV,
-    timestamp: new Date().toISOString() 
+// Serve Frontend in Production
+if (process.env.NODE_ENV === 'production') {
+  const frontendPath = path.resolve(__dirname, '../../frontend/dist');
+  app.use(express.static(frontendPath));
+  
+  app.get(/.*/, (req, res) => {
+    res.sendFile(path.join(frontendPath, 'index.html'));
   });
-});
+} else {
+  // Root route for development
+  app.get('/', (req, res) => {
+    res.json({ message: 'Ethara API is running' });
+  });
+}
 
 // Health check
 app.get('/health', (req, res) => {
